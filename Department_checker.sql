@@ -31,4 +31,10 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('In the ' || rec.DeptName || ' department the total salary is ' || rec.SumSal || '$.');
         DBMS_OUTPUT.PUT_LINE('In the ' || rec.DeptName || ' department the number of employees are ' || rec.NumOfEmp || '.');
     END LOOP;
+	
+	EXCEPTION 
+		WHEN VALUE_ERROR THEN
+			DBMS_OUTPUT.PUT_LINE('One of the provided value is not compatible');
+		WHEN OTHERS THEN 
+			DBMS_OUTPUT.PUT_LINE('An error occured. Please contact your IT department.');
 END;

@@ -8,7 +8,7 @@ VARIABLE Delta1 NUMBER
 ACCEPT inp_Salary PROMPT 'Enter the salary: '
 
 DECLARE
-    AvgSalary EMPLOYEES.SALARY%TYPE;
+	AvgSalary EMPLOYEES.SALARY%TYPE;
 	Salary EMPLOYEES.SALARY%TYPE;
 	Delta2 EMPLOYEES.SALARY%TYPE;
 
@@ -29,4 +29,10 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('This salary is more with ' || Delta2 || '$ then the average salary.');
     END IF;
     DBMS_OUTPUT.PUT_LINE('===============================================================');
+    
+    EXCEPTION
+		WHEN VALUE_ERROR THEN 
+			DBMS_OUTPUT.PUT_LINE('The value you provided is not numeric');
+        WHEN OTHERS THEN 
+			DBMS_OUTPUT.PUT_LINE('An error occured. Please contact your IT department.');
 END;
